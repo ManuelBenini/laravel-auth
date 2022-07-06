@@ -1,8 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
         <h1>Pagina index della C(R)UD</h1>
+
+        @if (session('delete_success'))
+            <div class="alert alert-danger" role="danger">
+                {{session('delete_success')}}
+            </div>
+        @endif
 
         <table class="table">
 
@@ -21,15 +27,28 @@
                         <th scope="row">{{$post->id}}</th>
                         <td>{{$post->title}}</td>
                         <td>
-                            <a class="btn btn-success" href="#">Mostra</a>
-                            <a class="btn btn-primary" href="#">Modifica</a>
-                            <a class="btn btn-danger" href="#">Cancella</a>
+                            <a class="btn btn-success" href="{{route('admin.posts.show', $post)}}">Mostra</a>
+                            <a class="btn btn-primary" href="{{route('admin.posts.edit', $post)}}">Modifica</a>
+
+                            <form class="d-inline"
+                            action="{{route('admin.posts.destroy', $post)}}"
+                            method="POST"
+                            onsubmit="return confirm('sei sicuro di voler cancellare il post?')">
+                                @csrf
+                                @method("DELETE")
+
+                                <button type="submit" class="btn btn-danger">Cancella</button>
+                            </form>
                         </td>
                     </tr>   
                 @endforeach
 
             </tbody>
 
-          </table>
+            
+        </table>
+
+        {{$posts->links()}}
+
     </div>
 @endsection

@@ -9,7 +9,8 @@ class Post extends Model
 {
     protected $fillable = [
         'title',
-        'content',
+        'slug',
+        'content'
     ];
 
     public static function generateSlug($title){

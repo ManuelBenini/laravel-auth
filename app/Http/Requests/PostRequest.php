@@ -25,7 +25,17 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255|min:3',
-            'content' => 'required',
+            'content' => 'required|min:10',
+        ];
+    }
+
+    public function messages(){
+        return[
+            'title.required' => 'Il campo titolo è obbligatorio',
+            'title.min' => 'Il campo titolo deve con tenere almeno :min caratteri',
+            'title.max' => 'Il campo titolo può avere al massimo :max caratteri',
+            'content.required' => 'Il campo content è obbligatorio',
+            'content.min' => 'Il campo content deve contenere almeno :min caratteri',
         ];
     }
 }
