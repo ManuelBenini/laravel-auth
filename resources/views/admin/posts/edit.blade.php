@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form 
+        <form
         action="{{route('admin.posts.update', $post)}}"
         method="POST"
         id="postsEditForm">
@@ -24,9 +24,9 @@
             <div class="mb-3">
               <label for="title" class="form-label">Titolo</label>
               <input type="text"
-              value="{{old('title', $post->title)}}" 
-              class="form-control @error('title') is-invalid @enderror" 
-              id="title" name="title" 
+              value="{{old('title', $post->title)}}"
+              class="form-control @error('title') is-invalid @enderror"
+              id="title" name="title"
               placeholder="Titolo">
 
               {{-- Errore gestito da Laravel --}}
@@ -41,8 +41,8 @@
 
             <div class="mb-3">
               <label for="content" class="form-label">Contenuto del post</label>
-              <textarea class="form-control @error('content') is-invalid @enderror" 
-              name="content" id="content" 
+              <textarea class="form-control @error('content') is-invalid @enderror"
+              name="content" id="content"
               cols="30" rows="10">{{old('content', $post->content)}}</textarea>
 
               {{-- Errore gestito da Laravel --}}
@@ -52,11 +52,11 @@
 
               {{-- Errore gestito da Jquery --}}
               <p class="text-danger" id="error-content"></p>
-              
+
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        
+
     </div>
 @endsection
