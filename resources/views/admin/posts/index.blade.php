@@ -7,6 +7,7 @@
         @if (session('delete_success'))
             <div class="alert alert-danger" role="danger">
                 {{session('delete_success')}}
+                <a class="btn btn-danger" href="{{route('admin.posts.index')}}">X</a>
             </div>
         @endif
 
@@ -40,12 +41,12 @@
                                 <button type="submit" class="btn btn-danger">Cancella</button>
                             </form>
                         </td>
-                    </tr>   
+                    </tr>
                 @endforeach
 
             </tbody>
 
-            
+
         </table>
 
         {{$posts->links()}}
